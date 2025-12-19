@@ -3,11 +3,7 @@ package com.example.trying;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,20 +24,16 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        
 
-        // Запускаем сервис
+
         startService(new Intent(this, TimerService.class));
 
-        // Передаем студентов в сервис
         for (Student student : students) {
             TimerService.addStudent(student);
         }
 
-        // Устанавливаем ссылку на активность
         TimerService.setActivity(this);
 
-        // Создаем адаптер
         adapter = new StudentAdapter(students, this);
         recyclerView.setAdapter(adapter);
 
@@ -52,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Метод для обновления UI (вызывается из сервиса)
      public void updateTimerUI(int studentId, long time) {
         runOnUiThread(() -> {
             adapter.updateTimer(studentId, time);

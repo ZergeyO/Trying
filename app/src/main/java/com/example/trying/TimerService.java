@@ -53,11 +53,6 @@ public class TimerService extends Service {
         students.add(student);
     }
 
-    public static void removeStudent(int studentId){
-        students.remove(studentId);
-    }
-
-    // Получаем студента по ID
     public static Student getStudent(int id) {
         for (Student student : students) {
             if (student.getId() == id) {
@@ -67,7 +62,6 @@ public class TimerService extends Service {
         return null;
     }
 
-    // Управление таймерами
     private void startStudentTimer(int studentId) {
         Student student = getStudent(studentId);
         if (student != null) {
@@ -91,12 +85,10 @@ public class TimerService extends Service {
         }
     }
 
-    // Запускаем обновление таймеров
     private void startTimerUpdates() {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                // Обновляем всех запущенных студентов
                 for (Student student : students) {
                     if (student.isRunning() && activity != null) {
                         updateActivity(student.getId(), student.getCurrentTime());
@@ -107,21 +99,16 @@ public class TimerService extends Service {
         });
     }
 
-    // Обновляем активность
     private void updateActivity(int studentId, long time) {
         if (activity != null) {
             activity.updateTimerUI(studentId, time);
         }
     }
 
-    // Устанавливаем активность
     public static void setActivity(MainActivity act) {
         activity = act;
     }
 
-
-
-    // Очищаем ссылку
     public static void clearActivity() {
         activity = null;
     }

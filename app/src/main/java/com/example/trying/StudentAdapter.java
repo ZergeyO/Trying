@@ -106,7 +106,6 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
 
     // Метод для обновления времени из Activity
     public void updateTimer(int studentId, long time) {
-        // Находим позицию студента
         for (int i = 0; i < students.size(); i++) {
             if (students.get(i).getId() == studentId) {
                 ViewHolder holder = (ViewHolder)
