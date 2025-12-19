@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_margin="8dp"
+    android:background="@android:color/white"
+    android:elevation="2dp">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/student_name"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00:00"
+        android:textSize="22sp"
+        android:textColor="#2196F3"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="12dp" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/start_button"
+            android:backgroundTint="#4CAF50"
+            android:textColor="@color/white"
+            android:layout_marginEnd="4dp" />
+
+        <Button
+            android:id="@+id/btn_pause"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/pause_button"
+            android:backgroundTint="#FF9800"
+            android:textColor="@color/white"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp" />
+
+        <Button
+            android:id="@+id/btn_stop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/stop_button"
+            android:backgroundTint="#F44336"
+            android:textColor="@color/white"
+            android:layout_marginStart="4dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="69dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="0"
+        android:textSize="18sp" />
+        <Button
+            android:id="@+id/btn_decrement"
+            style="@style/ButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="-"
+            android:backgroundTint="@color/red" />
+        <Button
+            android:id="@+id/btn_increment"
+            style="@style/ButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="+"
+            android:backgroundTint="@color/blue" />
+    </LinearLayout>
+</LinearLayout>

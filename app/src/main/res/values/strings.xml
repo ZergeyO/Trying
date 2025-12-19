@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Trying</string>
+    <string name="start_button">Start</string>
+    <string name="pause_button">Pause</string>
+    <string name="stop_button">Stop</string>
+    <string name="student_name">Student Name</string>
+    <string name="add_student">Add Student</string>
+    <string name="score">Score</string>
+    <string name="save_button">Save</string>
+</resources>
