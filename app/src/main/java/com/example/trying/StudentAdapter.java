@@ -108,11 +108,17 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
     public void updateTimer(int studentId, long time) {
         for (int i = 0; i < students.size(); i++) {
             if (students.get(i).getId() == studentId) {
+            /* Метод вызывается для КАЖДОГО студента по отдельности.
+            Обновление Таймера необходимо не всем студентам, а только тем,
+            кто сейчас отображается. Цикл for прогоняет ВЕСЬ список.
+            Для каждого элемента списка идёт сравнение по индиивидуальному номеру(id)
+            Когда совпадают индивидуальными номера между элементом из цикла for (то есть из перебора) и тем, что был передан
+            как аргумент функции, происходит попытка распознать, отображается ли данный элемент в RecyclerView*/
                 ViewHolder holder = (ViewHolder)
                         ((RecyclerView) ((MainActivity)context).findViewById(R.id.recyclerView))
                                 .findViewHolderForAdapterPosition(i);
-                if (holder != null) {
-                    holder.updateTimerDisplay(time);
+                if (holder != null) { //Если студент отоборажается, то у него есть Холдер. Иначе холдер будет нулевой.
+                    holder.updateTimerDisplay(time); //Обновление View времени у элемента в Холдере.
                 }
                 break;
             }
@@ -126,10 +132,10 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
 
         return String.format("%02d:%02d:%02d",
                 hours % 24, minutes % 60, seconds % 60);
-    }
+    } //Так как время сохраняется в формате миллисекунд от 1970 года, необходимо его форматирование.
     public void removeStudent(int position) {
         Student student = students.get(position);
-        Intent stopIntent = new Intent(context, TimerService.class);
+        Intent stopIntent = new Intent(context, TimerService.class); //При удалении объекта из списка его Таймер останавливается
         stopIntent.putExtra("command", "stop");
         stopIntent.putExtra("studentId", student.getId());
         context.startService(stopIntent);
